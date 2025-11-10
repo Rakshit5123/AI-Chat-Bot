@@ -1,12 +1,13 @@
 {
-  "name": "ai-chat-bot",
-  "version": "1.0.0",
-  "description": "AI Chat Bot application",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "dependencies": {
+    "@google/generative-ai": "^0.24.1",
+    "@types/mongodb": "^4.0.6",
+    "cookie-parser": "^1.4.7",
+    "jsonwebtoken": "^9.0.2",
+    "mongodb": "^7.0.0"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC"
+  "devDependencies": {
+    "@types/cookie-parser": "^1.4.10",
+    "@types/jsonwebtoken": "^9.0.10"
+  }
 }
