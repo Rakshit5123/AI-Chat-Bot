@@ -1,0 +1,26 @@
+services:
+  mongo:
+    image: mongo:6.0
+    restart: unless-stopped
+    environment:
+      MONGO_INITDB_DATABASE: chatbot
+    ports:
+      - "27017:27017"      
+     
+    volumes:
+      - mongo_data:/data/db
+
+  api:
+    build: .
+    command: sh -c "npm run dev"
+    environment:
+      MONGODB_URI: "mongodb://mongo:27017"
+      MONGODB_DB: "chatbot"
+      JWT_SECRET: "dev-secret"
+    ports:
+      - "5000:5000"
+    depends_on:
+      - mongo
+
+volumes:
+  mongo_data:

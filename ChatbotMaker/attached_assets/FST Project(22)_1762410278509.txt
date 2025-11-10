@@ -1,0 +1,15 @@
+Problem Statement
+Design and integrate an AI-powered chatbot into a MERN application using a provider-agnostic Node.js (Express) backend that can call either OpenAI APIs or Dialogflow. Expose secure chat endpoints that preserve per-user/session context, support streamed responses (SSE or WebSocket), and enforce token/rate limits. Persist conversations and metadata in MongoDB, implement basic safety/guardrail checks, and deliver a React chat UI with message history, context controls (clear/summarize), and provider/model selection.
+
+Key Features
+Provider Abstraction – Pluggable service layer for OpenAI or Dialogflow with unified request/response shape and configurable model/temperature/timeouts.
+Context & Memory – Session-scoped history with automatic summarization to manage token growth; controls to clear/reset and attach system prompts.
+Streaming APIs – Backend endpoints for /chat using SSE or WebSocket to stream partial tokens; heartbeat and backpressure handling.
+React Chat UI – Typing indicators, incremental rendering of streamed text, error/retry actions, and message grouping with timestamps.
+Persistence – MongoDB collections for users, sessions, messages, and prompts; TTL for inactive sessions; export/download conversation.
+Safety & Guardrails – Input validation, basic content policies, prompt-injection filtering, rate limiting/quotas per user, and secure secret handling.
+Tools & Functions (Optional) – Structured tool-calls (e.g., FAQ/DB lookup) with validated parameters and safe fallbacks when providers error.
+Observability & Cost – Metrics for latency, token usage, errors; structured logs with correlation IDs; simple budget caps per user/workspace.
+Auth & Security – JWT-protected routes, CORS and CSRF considerations, httpOnly cookies or secure headers; provider keys in env secrets.
+Testing – Mock provider for deterministic unit tests, contract tests on payload shapes, and E2E tests validating streaming and context retention.
+Dev & Ops – Environment-driven configs, seed scripts for demo sessions, and Docker Compose for API + MongoDB; feature flags for model rollout.
